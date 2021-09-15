@@ -30,4 +30,6 @@ const burgerSlice = createSlice({
     },
 })
 
+export const selectBurger = ({ burger }) => burger
+
 export default burgerSlice.reducer

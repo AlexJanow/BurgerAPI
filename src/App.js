@@ -1,8 +1,18 @@
 import "./App.css";
-import { Burger } from "./features/restaurants/Burger";
+import { BrowserRouter as Router } from "react-router-dom";
+import Main from "./components/Main";
+import { Header } from "./components/Header";
 
 function App() {
-  return <div className="App"><Burger /></div>;
+  return (
+    <>
+      <Router>
+        <div className="App">
+          <Header />
+          <Main />
+        </div>;
+      </Router>
+    </>)
 }
 
 export default App;
