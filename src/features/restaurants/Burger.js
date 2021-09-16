@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { selectBurger } from "./burgerSlice"
 import "./Burger.css"
 import { LoadMore } from "../../components/LoadMore"
+import { setCurrentPage } from "./currentPageSlice"
 
 
 
@@ -11,16 +12,17 @@ export const Burger = () => {
 
 
     // states
-    const [currentPage, setCurrentPage] = useState(1)
+    // const [currentPage, setCurrentPage] = useState(1)
     // const [itemsPerPage, setItemsPerPage] = useState(5)
 
 
     const dispatch = useDispatch()
+    const currentPage = useSelector((state) => state.currentPage.currentPage)
     const itemsPerPage = useSelector((state) => state.itemsPerPage.items)
     const burger = useSelector(selectBurger)
     const burgerList = burger.list
 
-    console.log(itemsPerPage)
+    // console.log(itemsPerPage)
     useEffect(() => {
         dispatch(getBurger(
             { limit: 100 }
@@ -37,7 +39,8 @@ export const Burger = () => {
     const currentItems = burgerList.slice(indexOfFirstItem, indexOfLastItem)
 
     const handleClick = (event) => {
-        setCurrentPage(Number(event.target.id))
+        dispatch(setCurrentPage(Number(event.target.id)))
+        // setCurrentPage(Number(event.target.id))
     }
 
     for (let i = 1; i <= Math.ceil(burgerList.length / itemsPerPage); i++) {
