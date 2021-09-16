@@ -3,6 +3,7 @@ import { getBurger } from "./burgerSlice"
 import { useEffect, useState } from "react"
 import { selectBurger } from "./burgerSlice"
 import "./Burger.css"
+import { LoadMore } from "../../components/LoadMore"
 
 
 
@@ -11,14 +12,15 @@ export const Burger = () => {
 
     // states
     const [currentPage, setCurrentPage] = useState(1)
-    const [itemsPerPage, setItemsPerPage] = useState(5)
+    // const [itemsPerPage, setItemsPerPage] = useState(5)
 
 
     const dispatch = useDispatch()
+    const itemsPerPage = useSelector((state) => state.itemsPerPage.items)
     const burger = useSelector(selectBurger)
     const burgerList = burger.list
 
-    console.log(burgerList)
+    console.log(itemsPerPage)
     useEffect(() => {
         dispatch(getBurger(
             { limit: 100 }
@@ -68,6 +70,7 @@ export const Burger = () => {
         <div>
 
             {renderBurger(currentItems)}
+            <LoadMore />
             <ul className="pageNumbers">{renderPageNumbers}</ul>
 
         </div>
