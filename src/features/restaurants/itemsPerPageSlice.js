@@ -6,12 +6,11 @@ const itemsPerPageSlice = createSlice({
         items: 5,
     },
     reducers: {
-        fivePerPage: state => { state.items = 5 },
-        tenPerPage: state => { state.items = 10 },
+        itemsPerPage: (state, action) => { state.items = action.payload },
         loadMore: state => { state.items += 5 },
     }
 })
 
-export const { fivePerPage, tenPerPage, loadMore } = itemsPerPageSlice.actions
+export const { itemsPerPage, loadMore } = itemsPerPageSlice.actions
 
 export default itemsPerPageSlice.reducer

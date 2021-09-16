@@ -11,9 +11,6 @@ import { setCurrentPage } from "./currentPageSlice"
 export const Burger = () => {
 
 
-    // states
-    // const [currentPage, setCurrentPage] = useState(1)
-    // const [itemsPerPage, setItemsPerPage] = useState(5)
 
 
     const dispatch = useDispatch()
@@ -31,30 +28,15 @@ export const Burger = () => {
 
 
 
-    //pagination
+    //show only items of chosen page
 
-    const pages = []
     const indexOfLastItem = currentPage * itemsPerPage
     const indexOfFirstItem = indexOfLastItem - itemsPerPage
     const currentItems = burgerList.slice(indexOfFirstItem, indexOfLastItem)
 
-    const handleClick = (event) => {
-        dispatch(setCurrentPage(Number(event.target.id)))
-        // setCurrentPage(Number(event.target.id))
-    }
 
-    for (let i = 1; i <= Math.ceil(burgerList.length / itemsPerPage); i++) {
-        pages.push(i)
-    }
+    //render list
 
-    const renderPageNumbers =
-        pages.map(number => {
-            return (
-                <li key={number} id={number} onClick={handleClick} className={currentPage === number ? "active" : null}>
-                    {number}
-                </li>
-            )
-        })
 
     const renderBurger = (burgerList) => {
         return (<ul className="burgerList">
@@ -71,10 +53,7 @@ export const Burger = () => {
 
     return (
         <div>
-
             {renderBurger(currentItems)}
-            <LoadMore />
-            <ul className="pageNumbers">{renderPageNumbers}</ul>
 
         </div>
     )
