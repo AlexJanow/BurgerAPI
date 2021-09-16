@@ -1,0 +1,27 @@
+.burgerList{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.pageNumbers{
+    list-style: none;
+    display:flex;
+    justify-content: center;
+    
+}
+
+.pageNumbers li {
+    padding: 10px; 
+    cursor: pointer;
+}
+
+.pageNumbers li:nth-child(odd){
+    background-color:burlywood;
+}
+
+.pageNumbers li.active {
+    font-weight: bold;
+    text-decoration: underline;
+}
