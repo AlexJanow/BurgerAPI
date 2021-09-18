@@ -3,9 +3,7 @@ import { getBurger } from "./burgerSlice"
 import { useEffect, useState } from "react"
 import { selectBurger } from "./burgerSlice"
 import "./Burger.css"
-import { LoadMore } from "../../components/LoadMore"
-import { setCurrentPage } from "./currentPageSlice"
-
+import { Link } from "react-router-dom"
 
 
 export const Burger = () => {
@@ -18,6 +16,11 @@ export const Burger = () => {
     const itemsPerPage = useSelector((state) => state.itemsPerPage.items)
     const burger = useSelector(selectBurger)
     const burgerList = burger.list
+
+
+
+
+
 
     // console.log(itemsPerPage)
     useEffect(() => {
@@ -42,9 +45,10 @@ export const Burger = () => {
         return (<ul className="burgerList">
             {burgerList.map(burger => {
                 const { addresses, description, id, ingredients, name, restaurant, web } = burger
-                return (<li key={id}>
-                    <h2>{name}</h2>
-                    <p>{description}</p>
+                return (<li className="Burger__card" key={id}>
+                    <Link className="Link" to={`/${id}`}>
+                        <h2>{name}</h2>
+                        <p>{description}</p></Link>
                 </li>)
             })}</ul>)
     }
