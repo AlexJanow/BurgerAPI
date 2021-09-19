@@ -3,9 +3,9 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const getBurger = createAsyncThunk(
     "burger/getBurger",
-    async ({ limit }, { dispatch, getState }) => {
+    async ({ dispatch, getState }) => {
         return fetch(
-            `https://my-burger-api.herokuapp.com/burgers?_limit=${limit}`
+            `https://my-burger-api.herokuapp.com/burgers`
         ).then((res) => res.json())
 
     }

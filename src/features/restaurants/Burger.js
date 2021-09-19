@@ -24,9 +24,7 @@ export const Burger = () => {
 
     // console.log(itemsPerPage)
     useEffect(() => {
-        dispatch(getBurger(
-            { limit: 100 }
-        ))
+        dispatch(getBurger({}))
     }, [dispatch])
 
 
