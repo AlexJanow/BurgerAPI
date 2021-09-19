@@ -5,6 +5,24 @@
 
 }
 
+.Burger__card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 300px;
+    margin: auto;
+    text-align: center;
+    padding:1em;
+    margin-top: .5em;
+}
+
+.Burger__card:hover{
+    padding: 1.5em;
+}
+
+.Link {
+    text-decoration: none;
+    color: black
+}
+
 .pageNumbers{
     list-style: none;
     display:flex;
